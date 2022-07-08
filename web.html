@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatable" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webcam</title>
+        <link rel="stylesheet" href="web.css">
+    </head>
+<body>
+    <video id="webcam" autoplay="true">
+    </video>
+    <script>
+        var video=document.getElementById("webcam");
+        var camera= navigator.mediaDevices.getUserMedia;
+        if(camera){
+            navigator.mediaDevices.getUserMedia({
+                video:true,
+                audio:true
+            })
+            .then(function(streamLive){
+                video.srcObject=streamLive;
+            })
+            .catch(function(error){
+                console.log('the camera is not working properly. Please try again later');
+            })
+        }
+    </script>
+</body>
+</html>
